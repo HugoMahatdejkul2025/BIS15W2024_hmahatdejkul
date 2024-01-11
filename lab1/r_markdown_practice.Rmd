@@ -22,6 +22,10 @@ library("tidyverse")
 #title
 ```{r}
 z<-4+4*2
+x<-2*2
+f<-mean(z+x) #this will not work because it doesn't treat it as two values so it iwll just diplay the addition and assign it to the variable f
+Y=z+x
+mean(Y)
 ```
 
 ```{r}
