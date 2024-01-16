@@ -32,12 +32,16 @@ my_vector <- c(10, 20, 30)
 A character vector. Characters always have quotes and may be referred to as "strings".
 ```{r}
 days_of_the_week <- c("Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday", "Sunday")
+class(days_of_the_week)
 ```
 
 A convenient trick for creating a vector is to generate a sequence of numbers.
 ```{r}
 my_vector_sequence <- c(1:100)
 my_vector_sequence
+```
+```{r}
+my_vector_sequence[my_vector_sequence<=10] # will look inside myvectorsequence and only retur those less than equal to 10 
 ```
 
 ## Identifying vector elements
@@ -50,9 +54,17 @@ days_of_the_week[3]
 Work through these examples and make adjustments to the values to experiment.
 
 1. Evaluate all numerics in `my_vector_sequence` to determine which has a value of 15.  
+```{r}
+my_vector_sequence==15
+
+```
 
 
 2. We can use operators such as <, >, ==, <==, etc. Show all values in `my_vector_sequence` that are less than 10.  How about less than or equal to 10?  
+```{r}
+z<-my_vector_sequence<=10
+z
+```
 
 
 3. If you use `[]` then you only get the values, not the logical evaluation of the entire vector. Experiment with this by adjusting the chunk below.    
@@ -126,9 +138,17 @@ all_harry_potter_matrix
 
 ## Practice
 1. What are the total earnings for the US and non-US regions?  
+```{r}
+Earnings<-colSums(harry_potter_matrix)
+Earnings
+```
 
 
 2. Add this information to the data matrix. Hint: you are adding a row, not a column.  
+```{r}
+Final_matrix<-rbind(harry_potter_matrix,Earnings)
+Final_matrix
+```
 
 
 ## A few Extras

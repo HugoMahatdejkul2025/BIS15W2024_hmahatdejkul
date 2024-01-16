@@ -1,14 +1,14 @@
 ---
 title: "Lab 2 Homework"
 author: "Hugo Mahatdejkul"
-date: "2024-01-13"
+date: "2024-01-16"
 output:
   html_document: 
     theme: spacelab
     keep_md: true
 ---
 
-## Instructions
+## Instruction
 Answer the following questions and complete the exercises in RMarkdown. Please embed all of your code and push your final work to your repository. Your final lab report should be organized, clean, and run free from errors. Remember, you must remove the `#` for the included code chunks to run. Be sure to add your name to the author header above.  
 
 Make sure to use the formatting conventions of RMarkdown to make your report neat and clean!  

@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2024-01-13" />
+<meta name="date" content="2024-01-16" />
 
 <title>Vectors and Data Matrices</title>
 
@@ -1503,7 +1503,7 @@ border-radius: 0px;
 
 
 <h1 class="title toc-ignore">Vectors and Data Matrices</h1>
-<h4 class="date">2024-01-13</h4>
+<h4 class="date">2024-01-16</h4>
 
 </div>
 
@@ -1534,7 +1534,9 @@ concatenate.</p>
 <pre class="r"><code>my_vector &lt;- c(10, 20, 30)</code></pre>
 <p>A character vector. Characters always have quotes and may be referred
 to as “strings”.</p>
-<pre class="r"><code>days_of_the_week &lt;- c(&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thrusday&quot;, &quot;Friday&quot;, &quot;Saturday&quot;, &quot;Sunday&quot;)</code></pre>
+<pre class="r"><code>days_of_the_week &lt;- c(&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thrusday&quot;, &quot;Friday&quot;, &quot;Saturday&quot;, &quot;Sunday&quot;)
+class(days_of_the_week)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
 <p>A convenient trick for creating a vector is to generate a sequence of
 numbers.</p>
 <pre class="r"><code>my_vector_sequence &lt;- c(1:100)
@@ -1545,6 +1547,8 @@ my_vector_sequence</code></pre>
 ##  [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72
 ##  [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90
 ##  [91]  91  92  93  94  95  96  97  98  99 100</code></pre>
+<pre class="r"><code>my_vector_sequence[my_vector_sequence&lt;=10] # will look inside myvectorsequence and only retur those less than equal to 10 </code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
 <div id="identifying-vector-elements" class="section level2">
 <h2>Identifying vector elements</h2>
@@ -1559,14 +1563,39 @@ Wednesday.</p>
 <p>Work through these examples and make adjustments to the values to
 experiment.</p>
 <ol style="list-style-type: decimal">
-<li><p>Evaluate all numerics in <code>my_vector_sequence</code> to
-determine which has a value of 15.</p></li>
-<li><p>We can use operators such as &lt;, &gt;, ==, &lt;==, etc. Show
-all values in <code>my_vector_sequence</code> that are less than 10. How
-about less than or equal to 10?</p></li>
-<li><p>If you use <code>[]</code> then you only get the values, not the
+<li>Evaluate all numerics in <code>my_vector_sequence</code> to
+determine which has a value of 15.</li>
+</ol>
+<pre class="r"><code>my_vector_sequence==15</code></pre>
+<pre><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [13] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [97] FALSE FALSE FALSE FALSE</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>We can use operators such as &lt;, &gt;, ==, &lt;==, etc. Show all
+values in <code>my_vector_sequence</code> that are less than 10. How
+about less than or equal to 10?</li>
+</ol>
+<pre class="r"><code>z&lt;-my_vector_sequence&lt;=10
+z</code></pre>
+<pre><code>##   [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE
+##  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [97] FALSE FALSE FALSE FALSE</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>If you use <code>[]</code> then you only get the values, not the
 logical evaluation of the entire vector. Experiment with this by
-adjusting the chunk below.</p></li>
+adjusting the chunk below.</li>
 </ol>
 </div>
 <div id="data-matrices" class="section level2">
@@ -1666,11 +1695,28 @@ all_harry_potter_matrix</code></pre>
 <div id="practice-1" class="section level2">
 <h2>Practice</h2>
 <ol style="list-style-type: decimal">
-<li><p>What are the total earnings for the US and non-US
-regions?</p></li>
-<li><p>Add this information to the data matrix. Hint: you are adding a
-row, not a column.</p></li>
+<li>What are the total earnings for the US and non-US regions?</li>
 </ol>
+<pre class="r"><code>Earnings&lt;-colSums(harry_potter_matrix)
+Earnings</code></pre>
+<pre><code>##     US non-US 
+## 2389.7 5332.9</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Add this information to the data matrix. Hint: you are adding a row,
+not a column.</li>
+</ol>
+<pre class="r"><code>Final_matrix&lt;-rbind(harry_potter_matrix,Earnings)
+Final_matrix</code></pre>
+<pre><code>##                          US non-US
+## Philosophers_Stone    317.5  657.1
+## Chamber_of_Secrets    261.9  616.9
+## Prisoner_of_Azkaban   249.5  547.1
+## Goblet_of_Fire        290.0  606.8
+## Order_of_the_Phoenix  292.0  647.8
+## Half_Blood_Prince     301.9  632.4
+## Deathly_Hallows_1     295.9  664.3
+## Deathly_Hallows_2     381.0  960.5
+## Earnings             2389.7 5332.9</code></pre>
 </div>
 <div id="a-few-extras" class="section level2">
 <h2>A few Extras</h2>
