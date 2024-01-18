@@ -1,0 +1,44 @@
+warmup
+```{r}
+#1
+plant_height<-c(30.7,37.6,28.4,NA,33.2)
+plant_height
+
+```
+
+```{r}
+#2
+plant_weight<-c(4,5.2,3.7,NA,4.6)
+plant_weight
+```
+
+```{r}
+#3labels for matrix
+samples<-c("plant1","plant2","plant3","plant4","plant5")
+Header<-c("height","mass")
+#3a.making the matrix
+plantsdata<-c(plant_height,plant_weight)
+plantsdata
+plantmatrix<-matrix(plantsdata,nrow=5,byrow=F)
+plantmatrix
+
+
+```
+
+```{r}
+#4 assigning the labels to the matrix
+rownames(plantmatrix)<-samples
+colnames(plantmatrix)<-Header
+plantmatrix
+```
+
+```{r}
+#6 find mean
+meanHeightnWeight<-colMeans(plantmatrix,na.rm=T)
+meanHeightnWeight
+
+updatedmatrix<-rbind(plantmatrix,meanHeightnWeight)
+updatedmatrix
+```
+
+

@@ -11,7 +11,7 @@
 
 <meta name="author" content="Hugo Mahatdejkul" />
 
-<meta name="date" content="2024-01-17" />
+<meta name="date" content="2024-01-18" />
 
 <title>Lab 3 Homework</title>
 
@@ -376,7 +376,7 @@ display: none;
 
 <h1 class="title toc-ignore">Lab 3 Homework</h1>
 <h4 class="author">Hugo Mahatdejkul</h4>
-<h4 class="date">2024-01-17</h4>
+<h4 class="date">2024-01-18</h4>
 
 </div>
 
@@ -600,27 +600,14 @@ sleep</code></pre>
 observations)? How do you know? Please show the <em>code</em> that you
 used to determine this below.</li>
 </ol>
-<pre class="r"><code>dim(sleep)</code></pre>
+<pre class="r"><code>?dim
+dim(sleep)</code></pre>
 <pre><code>## [1] 83 11</code></pre>
-<p>83 total observations of 11 variables</p>
+<p>11 variables and 83 observations</p>
 <ol start="4" style="list-style-type: decimal">
 <li>Are there any NAs in the data? How did you determine this? Please
 show your code.</li>
 </ol>
-<pre class="r"><code>glimpse(sleep)</code></pre>
-<pre><code>## Rows: 83
-## Columns: 11
-## $ name         &lt;chr&gt; &quot;Cheetah&quot;, &quot;Owl monkey&quot;, &quot;Mountain beaver&quot;, &quot;Greater shor…
-## $ genus        &lt;chr&gt; &quot;Acinonyx&quot;, &quot;Aotus&quot;, &quot;Aplodontia&quot;, &quot;Blarina&quot;, &quot;Bos&quot;, &quot;Bra…
-## $ vore         &lt;chr&gt; &quot;carni&quot;, &quot;omni&quot;, &quot;herbi&quot;, &quot;omni&quot;, &quot;herbi&quot;, &quot;herbi&quot;, &quot;carn…
-## $ order        &lt;chr&gt; &quot;Carnivora&quot;, &quot;Primates&quot;, &quot;Rodentia&quot;, &quot;Soricomorpha&quot;, &quot;Art…
-## $ conservation &lt;chr&gt; &quot;lc&quot;, NA, &quot;nt&quot;, &quot;lc&quot;, &quot;domesticated&quot;, NA, &quot;vu&quot;, NA, &quot;dome…
-## $ sleep_total  &lt;dbl&gt; 12.1, 17.0, 14.4, 14.9, 4.0, 14.4, 8.7, 7.0, 10.1, 3.0, 5…
-## $ sleep_rem    &lt;dbl&gt; NA, 1.8, 2.4, 2.3, 0.7, 2.2, 1.4, NA, 2.9, NA, 0.6, 0.8, …
-## $ sleep_cycle  &lt;dbl&gt; NA, NA, NA, 0.1333333, 0.6666667, 0.7666667, 0.3833333, N…
-## $ awake        &lt;dbl&gt; 11.9, 7.0, 9.6, 9.1, 20.0, 9.6, 15.3, 17.0, 13.9, 21.0, 1…
-## $ brainwt      &lt;dbl&gt; NA, 0.01550, NA, 0.00029, 0.42300, NA, NA, NA, 0.07000, 0…
-## $ bodywt       &lt;dbl&gt; 50.000, 0.480, 1.350, 0.019, 600.000, 3.850, 20.490, 0.04…</code></pre>
 <pre class="r"><code>summary(sleep)</code></pre>
 <pre><code>##      name              genus               vore              order          
 ##  Length:83          Length:83          Length:83          Length:83         
@@ -646,8 +633,8 @@ show your code.</li>
 ##  3rd Qu.:16.15   3rd Qu.:0.12550   3rd Qu.:  41.750  
 ##  Max.   :22.10   Max.   :5.71200   Max.   :6654.000  
 ##                  NA&#39;s   :27</code></pre>
-<p>Yes there are NAs in the data. Using glimpse I can physically see NAs
-and summary tells me the number of NAs in each.</p>
+<p>Yes there are NAs in the data. Using summary command tells me that
+there are NAs in some of the columns.</p>
 <ol start="5" style="list-style-type: decimal">
 <li>Show a list of the column names is this data frame.</li>
 </ol>
@@ -656,23 +643,77 @@ and summary tells me the number of NAs in each.</p>
 ##  [6] &quot;sleep_total&quot;  &quot;sleep_rem&quot;    &quot;sleep_cycle&quot;  &quot;awake&quot;        &quot;brainwt&quot;     
 ## [11] &quot;bodywt&quot;</code></pre>
 <pre class="r"><code>?names()</code></pre>
-<pre><code>## starting httpd help server ... done</code></pre>
 <ol start="6" style="list-style-type: decimal">
 <li>How many herbivores are represented in the data?</li>
 </ol>
-<pre class="r"><code>sleep$vore</code></pre>
-<pre><code>##  [1] &quot;carni&quot;   &quot;omni&quot;    &quot;herbi&quot;   &quot;omni&quot;    &quot;herbi&quot;   &quot;herbi&quot;   &quot;carni&quot;  
-##  [8] NA        &quot;carni&quot;   &quot;herbi&quot;   &quot;herbi&quot;   &quot;herbi&quot;   &quot;omni&quot;    &quot;herbi&quot;  
-## [15] &quot;omni&quot;    &quot;omni&quot;    &quot;omni&quot;    &quot;carni&quot;   &quot;herbi&quot;   &quot;omni&quot;    &quot;herbi&quot;  
-## [22] &quot;insecti&quot; &quot;herbi&quot;   &quot;herbi&quot;   &quot;omni&quot;    &quot;omni&quot;    &quot;herbi&quot;   &quot;carni&quot;  
-## [29] &quot;omni&quot;    &quot;herbi&quot;   &quot;carni&quot;   &quot;carni&quot;   &quot;herbi&quot;   &quot;omni&quot;    &quot;herbi&quot;  
-## [36] &quot;herbi&quot;   &quot;carni&quot;   &quot;omni&quot;    &quot;herbi&quot;   &quot;herbi&quot;   &quot;herbi&quot;   &quot;herbi&quot;  
-## [43] &quot;insecti&quot; &quot;herbi&quot;   &quot;carni&quot;   &quot;herbi&quot;   &quot;carni&quot;   &quot;herbi&quot;   &quot;herbi&quot;  
-## [50] &quot;omni&quot;    &quot;carni&quot;   &quot;carni&quot;   &quot;carni&quot;   &quot;omni&quot;    NA        &quot;omni&quot;   
-## [57] NA        NA        &quot;carni&quot;   &quot;carni&quot;   &quot;herbi&quot;   &quot;insecti&quot; NA       
-## [64] &quot;herbi&quot;   &quot;omni&quot;    &quot;omni&quot;    &quot;insecti&quot; &quot;herbi&quot;   NA        &quot;herbi&quot;  
-## [71] &quot;herbi&quot;   &quot;herbi&quot;   NA        &quot;omni&quot;    &quot;insecti&quot; &quot;herbi&quot;   &quot;herbi&quot;  
-## [78] &quot;omni&quot;    &quot;omni&quot;    &quot;carni&quot;   &quot;carni&quot;   &quot;carni&quot;   &quot;carni&quot;</code></pre>
+<pre class="r"><code>f&lt;-filter(sleep,vore==&quot;herbi&quot;)
+f #shows 32 rows.</code></pre>
+<pre><code>##                              name        genus  vore          order
+## 1                 Mountain beaver   Aplodontia herbi       Rodentia
+## 2                             Cow          Bos herbi   Artiodactyla
+## 3                Three-toed sloth     Bradypus herbi         Pilosa
+## 4                        Roe deer    Capreolus herbi   Artiodactyla
+## 5                            Goat        Capri herbi   Artiodactyla
+## 6                      Guinea pig        Cavis herbi       Rodentia
+## 7                      Chinchilla   Chinchilla herbi       Rodentia
+## 8                      Tree hyrax  Dendrohyrax herbi     Hyracoidea
+## 9                  Asian elephant      Elephas herbi    Proboscidea
+## 10                          Horse        Equus herbi Perissodactyla
+## 11                         Donkey        Equus herbi Perissodactyla
+## 12      Western american chipmunk     Eutamias herbi       Rodentia
+## 13                        Giraffe      Giraffa herbi   Artiodactyla
+## 14                     Gray hyrax  Heterohyrax herbi     Hyracoidea
+## 15                 Mongoose lemur        Lemur herbi       Primates
+## 16               African elephant    Loxodonta herbi    Proboscidea
+## 17               Mongolian gerbil     Meriones herbi       Rodentia
+## 18                 Golden hamster Mesocricetus herbi       Rodentia
+## 19                          Vole      Microtus herbi       Rodentia
+## 20                    House mouse          Mus herbi       Rodentia
+## 21           Round-tailed muskrat     Neofiber herbi       Rodentia
+## 22                           Degu      Octodon herbi       Rodentia
+## 23                         Rabbit  Oryctolagus herbi     Lagomorpha
+## 24                          Sheep         Ovis herbi   Artiodactyla
+## 25                        Potoroo     Potorous herbi  Diprotodontia
+## 26                 Laboratory rat       Rattus herbi       Rodentia
+## 27                     Cotton rat     Sigmodon herbi       Rodentia
+## 28         Arctic ground squirrel Spermophilus herbi       Rodentia
+## 29 Thirteen-lined ground squirrel Spermophilus herbi       Rodentia
+## 30 Golden-mantled ground squirrel Spermophilus herbi       Rodentia
+## 31      Eastern american chipmunk       Tamias herbi       Rodentia
+## 32                Brazilian tapir      Tapirus herbi Perissodactyla
+##    conservation sleep_total sleep_rem sleep_cycle awake brainwt   bodywt
+## 1            nt        14.4       2.4          NA   9.6      NA    1.350
+## 2  domesticated         4.0       0.7   0.6666667  20.0 0.42300  600.000
+## 3          &lt;NA&gt;        14.4       2.2   0.7666667   9.6      NA    3.850
+## 4            lc         3.0        NA          NA  21.0 0.09820   14.800
+## 5            lc         5.3       0.6          NA  18.7 0.11500   33.500
+## 6  domesticated         9.4       0.8   0.2166667  14.6 0.00550    0.728
+## 7  domesticated        12.5       1.5   0.1166667  11.5 0.00640    0.420
+## 8            lc         5.3       0.5          NA  18.7 0.01230    2.950
+## 9            en         3.9        NA          NA  20.1 4.60300 2547.000
+## 10 domesticated         2.9       0.6   1.0000000  21.1 0.65500  521.000
+## 11 domesticated         3.1       0.4          NA  20.9 0.41900  187.000
+## 12         &lt;NA&gt;        14.9        NA          NA   9.1      NA    0.071
+## 13           cd         1.9       0.4          NA  22.1      NA  899.995
+## 14           lc         6.3       0.6          NA  17.7 0.01227    2.625
+## 15           vu         9.5       0.9          NA  14.5      NA    1.670
+## 16           vu         3.3        NA          NA  20.7 5.71200 6654.000
+## 17           lc        14.2       1.9          NA   9.8      NA    0.053
+## 18           en        14.3       3.1   0.2000000   9.7 0.00100    0.120
+## 19         &lt;NA&gt;        12.8        NA          NA  11.2      NA    0.035
+## 20           nt        12.5       1.4   0.1833333  11.5 0.00040    0.022
+## 21           nt        14.6        NA          NA   9.4      NA    0.266
+## 22           lc         7.7       0.9          NA  16.3      NA    0.210
+## 23 domesticated         8.4       0.9   0.4166667  15.6 0.01210    2.500
+## 24 domesticated         3.8       0.6          NA  20.2 0.17500   55.500
+## 25         &lt;NA&gt;        11.1       1.5          NA  12.9      NA    1.100
+## 26           lc        13.0       2.4   0.1833333  11.0 0.00190    0.320
+## 27         &lt;NA&gt;        11.3       1.1   0.1500000  12.7 0.00118    0.148
+## 28           lc        16.6        NA          NA   7.4 0.00570    0.920
+## 29           lc        13.8       3.4   0.2166667  10.2 0.00400    0.101
+## 30           lc        15.9       3.0          NA   8.1      NA    0.205
+## 31         &lt;NA&gt;        15.8        NA          NA   8.2      NA    0.112
+## 32           vu         4.4       1.0   0.9000000  19.6 0.16900  207.501</code></pre>
 <pre class="r"><code>table(sleep$vore)</code></pre>
 <pre><code>## 
 ##   carni   herbi insecti    omni 
@@ -684,8 +725,8 @@ define small as less than or equal to 19kg body weight and large as
 greater than or equal to 200kg body weight. Make two new dataframes
 (large and small) based on these parameters.</li>
 </ol>
-<pre class="r"><code>large&lt;-filter(sleep,bodywt&gt;200)
-small&lt;-filter(sleep,bodywt&lt;=200)
+<pre class="r"><code>large&lt;-filter(sleep,bodywt&gt;=200)
+small&lt;-filter(sleep,bodywt&lt;=19)
 large</code></pre>
 <pre><code>##               name         genus  vore          order conservation sleep_total
 ## 1              Cow           Bos herbi   Artiodactyla domesticated         4.0
@@ -705,166 +746,272 @@ large</code></pre>
 ## 7       1.0   0.9000000 19.60   0.169  207.501</code></pre>
 <pre class="r"><code>small</code></pre>
 <pre><code>##                              name         genus    vore           order
-## 1                         Cheetah      Acinonyx   carni       Carnivora
-## 2                      Owl monkey         Aotus    omni        Primates
-## 3                 Mountain beaver    Aplodontia   herbi        Rodentia
-## 4      Greater short-tailed shrew       Blarina    omni    Soricomorpha
-## 5                Three-toed sloth      Bradypus   herbi          Pilosa
-## 6               Northern fur seal   Callorhinus   carni       Carnivora
-## 7                    Vesper mouse       Calomys    &lt;NA&gt;        Rodentia
-## 8                             Dog         Canis   carni       Carnivora
-## 9                        Roe deer     Capreolus   herbi    Artiodactyla
-## 10                           Goat         Capri   herbi    Artiodactyla
-## 11                     Guinea pig         Cavis   herbi        Rodentia
-## 12                         Grivet Cercopithecus    omni        Primates
-## 13                     Chinchilla    Chinchilla   herbi        Rodentia
-## 14                Star-nosed mole     Condylura    omni    Soricomorpha
-## 15      African giant pouched rat    Cricetomys    omni        Rodentia
-## 16      Lesser short-tailed shrew     Cryptotis    omni    Soricomorpha
-## 17           Long-nosed armadillo       Dasypus   carni       Cingulata
-## 18                     Tree hyrax   Dendrohyrax   herbi      Hyracoidea
-## 19         North American Opossum     Didelphis    omni Didelphimorphia
-## 20                  Big brown bat     Eptesicus insecti      Chiroptera
-## 21                         Donkey         Equus   herbi  Perissodactyla
-## 22              European hedgehog     Erinaceus    omni  Erinaceomorpha
-## 23                   Patas monkey  Erythrocebus    omni        Primates
-## 24      Western american chipmunk      Eutamias   herbi        Rodentia
-## 25                   Domestic cat         Felis   carni       Carnivora
-## 26                         Galago        Galago    omni        Primates
-## 27                      Gray seal  Haliochoerus   carni       Carnivora
-## 28                     Gray hyrax   Heterohyrax   herbi      Hyracoidea
-## 29                          Human          Homo    omni        Primates
-## 30                 Mongoose lemur         Lemur   herbi        Primates
-## 31           Thick-tailed opposum    Lutreolina   carni Didelphimorphia
-## 32                        Macaque        Macaca    omni        Primates
-## 33               Mongolian gerbil      Meriones   herbi        Rodentia
-## 34                 Golden hamster  Mesocricetus   herbi        Rodentia
-## 35                          Vole       Microtus   herbi        Rodentia
-## 36                    House mouse           Mus   herbi        Rodentia
-## 37               Little brown bat        Myotis insecti      Chiroptera
-## 38           Round-tailed muskrat      Neofiber   herbi        Rodentia
-## 39                     Slow loris     Nyctibeus   carni        Primates
-## 40                           Degu       Octodon   herbi        Rodentia
-## 41     Northern grasshopper mouse     Onychomys   carni        Rodentia
-## 42                         Rabbit   Oryctolagus   herbi      Lagomorpha
-## 43                          Sheep          Ovis   herbi    Artiodactyla
-## 44                     Chimpanzee           Pan    omni        Primates
-## 45                          Tiger      Panthera   carni       Carnivora
-## 46                         Jaguar      Panthera   carni       Carnivora
-## 47                           Lion      Panthera   carni       Carnivora
-## 48                         Baboon         Papio    omni        Primates
-## 49                Desert hedgehog   Paraechinus    &lt;NA&gt;  Erinaceomorpha
-## 50                          Potto  Perodicticus    omni        Primates
-## 51                     Deer mouse    Peromyscus    &lt;NA&gt;        Rodentia
-## 52                      Phalanger     Phalanger    &lt;NA&gt;   Diprotodontia
-## 53                   Caspian seal         Phoca   carni       Carnivora
-## 54                Common porpoise      Phocoena   carni         Cetacea
-## 55                        Potoroo      Potorous   herbi   Diprotodontia
-## 56                Giant armadillo    Priodontes insecti       Cingulata
-## 57                     Rock hyrax      Procavia    &lt;NA&gt;      Hyracoidea
-## 58                 Laboratory rat        Rattus   herbi        Rodentia
-## 59          African striped mouse     Rhabdomys    omni        Rodentia
-## 60                Squirrel monkey       Saimiri    omni        Primates
-## 61          Eastern american mole      Scalopus insecti    Soricomorpha
-## 62                     Cotton rat      Sigmodon   herbi        Rodentia
-## 63                       Mole rat        Spalax    &lt;NA&gt;        Rodentia
-## 64         Arctic ground squirrel  Spermophilus   herbi        Rodentia
-## 65 Thirteen-lined ground squirrel  Spermophilus   herbi        Rodentia
-## 66 Golden-mantled ground squirrel  Spermophilus   herbi        Rodentia
-## 67                     Musk shrew        Suncus    &lt;NA&gt;    Soricomorpha
-## 68                            Pig           Sus    omni    Artiodactyla
-## 69            Short-nosed echidna  Tachyglossus insecti     Monotremata
-## 70      Eastern american chipmunk        Tamias   herbi        Rodentia
-## 71                         Tenrec        Tenrec    omni    Afrosoricida
-## 72                     Tree shrew        Tupaia    omni      Scandentia
-## 73           Bottle-nosed dolphin      Tursiops   carni         Cetacea
-## 74                          Genet       Genetta   carni       Carnivora
-## 75                     Arctic fox        Vulpes   carni       Carnivora
-## 76                        Red fox        Vulpes   carni       Carnivora
-##    conservation sleep_total sleep_rem sleep_cycle awake brainwt  bodywt
-## 1            lc        12.1        NA          NA 11.90      NA  50.000
-## 2          &lt;NA&gt;        17.0       1.8          NA  7.00 0.01550   0.480
-## 3            nt        14.4       2.4          NA  9.60      NA   1.350
-## 4            lc        14.9       2.3   0.1333333  9.10 0.00029   0.019
-## 5          &lt;NA&gt;        14.4       2.2   0.7666667  9.60      NA   3.850
-## 6            vu         8.7       1.4   0.3833333 15.30      NA  20.490
-## 7          &lt;NA&gt;         7.0        NA          NA 17.00      NA   0.045
-## 8  domesticated        10.1       2.9   0.3333333 13.90 0.07000  14.000
-## 9            lc         3.0        NA          NA 21.00 0.09820  14.800
-## 10           lc         5.3       0.6          NA 18.70 0.11500  33.500
-## 11 domesticated         9.4       0.8   0.2166667 14.60 0.00550   0.728
-## 12           lc        10.0       0.7          NA 14.00      NA   4.750
-## 13 domesticated        12.5       1.5   0.1166667 11.50 0.00640   0.420
-## 14           lc        10.3       2.2          NA 13.70 0.00100   0.060
-## 15         &lt;NA&gt;         8.3       2.0          NA 15.70 0.00660   1.000
-## 16           lc         9.1       1.4   0.1500000 14.90 0.00014   0.005
-## 17           lc        17.4       3.1   0.3833333  6.60 0.01080   3.500
-## 18           lc         5.3       0.5          NA 18.70 0.01230   2.950
-## 19           lc        18.0       4.9   0.3333333  6.00 0.00630   1.700
-## 20           lc        19.7       3.9   0.1166667  4.30 0.00030   0.023
-## 21 domesticated         3.1       0.4          NA 20.90 0.41900 187.000
-## 22           lc        10.1       3.5   0.2833333 13.90 0.00350   0.770
-## 23           lc        10.9       1.1          NA 13.10 0.11500  10.000
-## 24         &lt;NA&gt;        14.9        NA          NA  9.10      NA   0.071
-## 25 domesticated        12.5       3.2   0.4166667 11.50 0.02560   3.300
-## 26         &lt;NA&gt;         9.8       1.1   0.5500000 14.20 0.00500   0.200
-## 27           lc         6.2       1.5          NA 17.80 0.32500  85.000
-## 28           lc         6.3       0.6          NA 17.70 0.01227   2.625
-## 29         &lt;NA&gt;         8.0       1.9   1.5000000 16.00 1.32000  62.000
-## 30           vu         9.5       0.9          NA 14.50      NA   1.670
-## 31           lc        19.4       6.6          NA  4.60      NA   0.370
-## 32         &lt;NA&gt;        10.1       1.2   0.7500000 13.90 0.17900   6.800
-## 33           lc        14.2       1.9          NA  9.80      NA   0.053
-## 34           en        14.3       3.1   0.2000000  9.70 0.00100   0.120
-## 35         &lt;NA&gt;        12.8        NA          NA 11.20      NA   0.035
-## 36           nt        12.5       1.4   0.1833333 11.50 0.00040   0.022
-## 37         &lt;NA&gt;        19.9       2.0   0.2000000  4.10 0.00025   0.010
-## 38           nt        14.6        NA          NA  9.40      NA   0.266
-## 39         &lt;NA&gt;        11.0        NA          NA 13.00 0.01250   1.400
-## 40           lc         7.7       0.9          NA 16.30      NA   0.210
-## 41           lc        14.5        NA          NA  9.50      NA   0.028
-## 42 domesticated         8.4       0.9   0.4166667 15.60 0.01210   2.500
-## 43 domesticated         3.8       0.6          NA 20.20 0.17500  55.500
-## 44         &lt;NA&gt;         9.7       1.4   1.4166667 14.30 0.44000  52.200
-## 45           en        15.8        NA          NA  8.20      NA 162.564
-## 46           nt        10.4        NA          NA 13.60 0.15700 100.000
-## 47           vu        13.5        NA          NA 10.50      NA 161.499
-## 48         &lt;NA&gt;         9.4       1.0   0.6666667 14.60 0.18000  25.235
-## 49           lc        10.3       2.7          NA 13.70 0.00240   0.550
-## 50           lc        11.0        NA          NA 13.00      NA   1.100
-## 51         &lt;NA&gt;        11.5        NA          NA 12.50      NA   0.021
-## 52         &lt;NA&gt;        13.7       1.8          NA 10.30 0.01140   1.620
-## 53           vu         3.5       0.4          NA 20.50      NA  86.000
-## 54           vu         5.6        NA          NA 18.45      NA  53.180
-## 55         &lt;NA&gt;        11.1       1.5          NA 12.90      NA   1.100
-## 56           en        18.1       6.1          NA  5.90 0.08100  60.000
-## 57           lc         5.4       0.5          NA 18.60 0.02100   3.600
-## 58           lc        13.0       2.4   0.1833333 11.00 0.00190   0.320
-## 59         &lt;NA&gt;         8.7        NA          NA 15.30      NA   0.044
-## 60         &lt;NA&gt;         9.6       1.4          NA 14.40 0.02000   0.743
-## 61           lc         8.4       2.1   0.1666667 15.60 0.00120   0.075
-## 62         &lt;NA&gt;        11.3       1.1   0.1500000 12.70 0.00118   0.148
-## 63         &lt;NA&gt;        10.6       2.4          NA 13.40 0.00300   0.122
-## 64           lc        16.6        NA          NA  7.40 0.00570   0.920
-## 65           lc        13.8       3.4   0.2166667 10.20 0.00400   0.101
-## 66           lc        15.9       3.0          NA  8.10      NA   0.205
-## 67         &lt;NA&gt;        12.8       2.0   0.1833333 11.20 0.00033   0.048
-## 68 domesticated         9.1       2.4   0.5000000 14.90 0.18000  86.250
-## 69         &lt;NA&gt;         8.6        NA          NA 15.40 0.02500   4.500
-## 70         &lt;NA&gt;        15.8        NA          NA  8.20      NA   0.112
-## 71         &lt;NA&gt;        15.6       2.3          NA  8.40 0.00260   0.900
-## 72         &lt;NA&gt;         8.9       2.6   0.2333333 15.10 0.00250   0.104
-## 73         &lt;NA&gt;         5.2        NA          NA 18.80      NA 173.330
-## 74         &lt;NA&gt;         6.3       1.3          NA 17.70 0.01750   2.000
-## 75         &lt;NA&gt;        12.5        NA          NA 11.50 0.04450   3.380
-## 76         &lt;NA&gt;         9.8       2.4   0.3500000 14.20 0.05040   4.230</code></pre>
+## 1                      Owl monkey         Aotus    omni        Primates
+## 2                 Mountain beaver    Aplodontia   herbi        Rodentia
+## 3      Greater short-tailed shrew       Blarina    omni    Soricomorpha
+## 4                Three-toed sloth      Bradypus   herbi          Pilosa
+## 5                    Vesper mouse       Calomys    &lt;NA&gt;        Rodentia
+## 6                             Dog         Canis   carni       Carnivora
+## 7                        Roe deer     Capreolus   herbi    Artiodactyla
+## 8                      Guinea pig         Cavis   herbi        Rodentia
+## 9                          Grivet Cercopithecus    omni        Primates
+## 10                     Chinchilla    Chinchilla   herbi        Rodentia
+## 11                Star-nosed mole     Condylura    omni    Soricomorpha
+## 12      African giant pouched rat    Cricetomys    omni        Rodentia
+## 13      Lesser short-tailed shrew     Cryptotis    omni    Soricomorpha
+## 14           Long-nosed armadillo       Dasypus   carni       Cingulata
+## 15                     Tree hyrax   Dendrohyrax   herbi      Hyracoidea
+## 16         North American Opossum     Didelphis    omni Didelphimorphia
+## 17                  Big brown bat     Eptesicus insecti      Chiroptera
+## 18              European hedgehog     Erinaceus    omni  Erinaceomorpha
+## 19                   Patas monkey  Erythrocebus    omni        Primates
+## 20      Western american chipmunk      Eutamias   herbi        Rodentia
+## 21                   Domestic cat         Felis   carni       Carnivora
+## 22                         Galago        Galago    omni        Primates
+## 23                     Gray hyrax   Heterohyrax   herbi      Hyracoidea
+## 24                 Mongoose lemur         Lemur   herbi        Primates
+## 25           Thick-tailed opposum    Lutreolina   carni Didelphimorphia
+## 26                        Macaque        Macaca    omni        Primates
+## 27               Mongolian gerbil      Meriones   herbi        Rodentia
+## 28                 Golden hamster  Mesocricetus   herbi        Rodentia
+## 29                          Vole       Microtus   herbi        Rodentia
+## 30                    House mouse           Mus   herbi        Rodentia
+## 31               Little brown bat        Myotis insecti      Chiroptera
+## 32           Round-tailed muskrat      Neofiber   herbi        Rodentia
+## 33                     Slow loris     Nyctibeus   carni        Primates
+## 34                           Degu       Octodon   herbi        Rodentia
+## 35     Northern grasshopper mouse     Onychomys   carni        Rodentia
+## 36                         Rabbit   Oryctolagus   herbi      Lagomorpha
+## 37                Desert hedgehog   Paraechinus    &lt;NA&gt;  Erinaceomorpha
+## 38                          Potto  Perodicticus    omni        Primates
+## 39                     Deer mouse    Peromyscus    &lt;NA&gt;        Rodentia
+## 40                      Phalanger     Phalanger    &lt;NA&gt;   Diprotodontia
+## 41                        Potoroo      Potorous   herbi   Diprotodontia
+## 42                     Rock hyrax      Procavia    &lt;NA&gt;      Hyracoidea
+## 43                 Laboratory rat        Rattus   herbi        Rodentia
+## 44          African striped mouse     Rhabdomys    omni        Rodentia
+## 45                Squirrel monkey       Saimiri    omni        Primates
+## 46          Eastern american mole      Scalopus insecti    Soricomorpha
+## 47                     Cotton rat      Sigmodon   herbi        Rodentia
+## 48                       Mole rat        Spalax    &lt;NA&gt;        Rodentia
+## 49         Arctic ground squirrel  Spermophilus   herbi        Rodentia
+## 50 Thirteen-lined ground squirrel  Spermophilus   herbi        Rodentia
+## 51 Golden-mantled ground squirrel  Spermophilus   herbi        Rodentia
+## 52                     Musk shrew        Suncus    &lt;NA&gt;    Soricomorpha
+## 53            Short-nosed echidna  Tachyglossus insecti     Monotremata
+## 54      Eastern american chipmunk        Tamias   herbi        Rodentia
+## 55                         Tenrec        Tenrec    omni    Afrosoricida
+## 56                     Tree shrew        Tupaia    omni      Scandentia
+## 57                          Genet       Genetta   carni       Carnivora
+## 58                     Arctic fox        Vulpes   carni       Carnivora
+## 59                        Red fox        Vulpes   carni       Carnivora
+##    conservation sleep_total sleep_rem sleep_cycle awake brainwt bodywt
+## 1          &lt;NA&gt;        17.0       1.8          NA   7.0 0.01550  0.480
+## 2            nt        14.4       2.4          NA   9.6      NA  1.350
+## 3            lc        14.9       2.3   0.1333333   9.1 0.00029  0.019
+## 4          &lt;NA&gt;        14.4       2.2   0.7666667   9.6      NA  3.850
+## 5          &lt;NA&gt;         7.0        NA          NA  17.0      NA  0.045
+## 6  domesticated        10.1       2.9   0.3333333  13.9 0.07000 14.000
+## 7            lc         3.0        NA          NA  21.0 0.09820 14.800
+## 8  domesticated         9.4       0.8   0.2166667  14.6 0.00550  0.728
+## 9            lc        10.0       0.7          NA  14.0      NA  4.750
+## 10 domesticated        12.5       1.5   0.1166667  11.5 0.00640  0.420
+## 11           lc        10.3       2.2          NA  13.7 0.00100  0.060
+## 12         &lt;NA&gt;         8.3       2.0          NA  15.7 0.00660  1.000
+## 13           lc         9.1       1.4   0.1500000  14.9 0.00014  0.005
+## 14           lc        17.4       3.1   0.3833333   6.6 0.01080  3.500
+## 15           lc         5.3       0.5          NA  18.7 0.01230  2.950
+## 16           lc        18.0       4.9   0.3333333   6.0 0.00630  1.700
+## 17           lc        19.7       3.9   0.1166667   4.3 0.00030  0.023
+## 18           lc        10.1       3.5   0.2833333  13.9 0.00350  0.770
+## 19           lc        10.9       1.1          NA  13.1 0.11500 10.000
+## 20         &lt;NA&gt;        14.9        NA          NA   9.1      NA  0.071
+## 21 domesticated        12.5       3.2   0.4166667  11.5 0.02560  3.300
+## 22         &lt;NA&gt;         9.8       1.1   0.5500000  14.2 0.00500  0.200
+## 23           lc         6.3       0.6          NA  17.7 0.01227  2.625
+## 24           vu         9.5       0.9          NA  14.5      NA  1.670
+## 25           lc        19.4       6.6          NA   4.6      NA  0.370
+## 26         &lt;NA&gt;        10.1       1.2   0.7500000  13.9 0.17900  6.800
+## 27           lc        14.2       1.9          NA   9.8      NA  0.053
+## 28           en        14.3       3.1   0.2000000   9.7 0.00100  0.120
+## 29         &lt;NA&gt;        12.8        NA          NA  11.2      NA  0.035
+## 30           nt        12.5       1.4   0.1833333  11.5 0.00040  0.022
+## 31         &lt;NA&gt;        19.9       2.0   0.2000000   4.1 0.00025  0.010
+## 32           nt        14.6        NA          NA   9.4      NA  0.266
+## 33         &lt;NA&gt;        11.0        NA          NA  13.0 0.01250  1.400
+## 34           lc         7.7       0.9          NA  16.3      NA  0.210
+## 35           lc        14.5        NA          NA   9.5      NA  0.028
+## 36 domesticated         8.4       0.9   0.4166667  15.6 0.01210  2.500
+## 37           lc        10.3       2.7          NA  13.7 0.00240  0.550
+## 38           lc        11.0        NA          NA  13.0      NA  1.100
+## 39         &lt;NA&gt;        11.5        NA          NA  12.5      NA  0.021
+## 40         &lt;NA&gt;        13.7       1.8          NA  10.3 0.01140  1.620
+## 41         &lt;NA&gt;        11.1       1.5          NA  12.9      NA  1.100
+## 42           lc         5.4       0.5          NA  18.6 0.02100  3.600
+## 43           lc        13.0       2.4   0.1833333  11.0 0.00190  0.320
+## 44         &lt;NA&gt;         8.7        NA          NA  15.3      NA  0.044
+## 45         &lt;NA&gt;         9.6       1.4          NA  14.4 0.02000  0.743
+## 46           lc         8.4       2.1   0.1666667  15.6 0.00120  0.075
+## 47         &lt;NA&gt;        11.3       1.1   0.1500000  12.7 0.00118  0.148
+## 48         &lt;NA&gt;        10.6       2.4          NA  13.4 0.00300  0.122
+## 49           lc        16.6        NA          NA   7.4 0.00570  0.920
+## 50           lc        13.8       3.4   0.2166667  10.2 0.00400  0.101
+## 51           lc        15.9       3.0          NA   8.1      NA  0.205
+## 52         &lt;NA&gt;        12.8       2.0   0.1833333  11.2 0.00033  0.048
+## 53         &lt;NA&gt;         8.6        NA          NA  15.4 0.02500  4.500
+## 54         &lt;NA&gt;        15.8        NA          NA   8.2      NA  0.112
+## 55         &lt;NA&gt;        15.6       2.3          NA   8.4 0.00260  0.900
+## 56         &lt;NA&gt;         8.9       2.6   0.2333333  15.1 0.00250  0.104
+## 57         &lt;NA&gt;         6.3       1.3          NA  17.7 0.01750  2.000
+## 58         &lt;NA&gt;        12.5        NA          NA  11.5 0.04450  3.380
+## 59         &lt;NA&gt;         9.8       2.4   0.3500000  14.2 0.05040  4.230</code></pre>
+<pre class="r"><code>newdataframelarge&lt;-data.frame(large)
+newdataframelarge</code></pre>
+<pre><code>##               name         genus  vore          order conservation sleep_total
+## 1              Cow           Bos herbi   Artiodactyla domesticated         4.0
+## 2   Asian elephant       Elephas herbi    Proboscidea           en         3.9
+## 3            Horse         Equus herbi Perissodactyla domesticated         2.9
+## 4          Giraffe       Giraffa herbi   Artiodactyla           cd         1.9
+## 5      Pilot whale Globicephalus carni        Cetacea           cd         2.7
+## 6 African elephant     Loxodonta herbi    Proboscidea           vu         3.3
+## 7  Brazilian tapir       Tapirus herbi Perissodactyla           vu         4.4
+##   sleep_rem sleep_cycle awake brainwt   bodywt
+## 1       0.7   0.6666667 20.00   0.423  600.000
+## 2        NA          NA 20.10   4.603 2547.000
+## 3       0.6   1.0000000 21.10   0.655  521.000
+## 4       0.4          NA 22.10      NA  899.995
+## 5       0.1          NA 21.35      NA  800.000
+## 6        NA          NA 20.70   5.712 6654.000
+## 7       1.0   0.9000000 19.60   0.169  207.501</code></pre>
+<pre class="r"><code>newdataframesmall&lt;-data.frame(small)
+newdataframesmall</code></pre>
+<pre><code>##                              name         genus    vore           order
+## 1                      Owl monkey         Aotus    omni        Primates
+## 2                 Mountain beaver    Aplodontia   herbi        Rodentia
+## 3      Greater short-tailed shrew       Blarina    omni    Soricomorpha
+## 4                Three-toed sloth      Bradypus   herbi          Pilosa
+## 5                    Vesper mouse       Calomys    &lt;NA&gt;        Rodentia
+## 6                             Dog         Canis   carni       Carnivora
+## 7                        Roe deer     Capreolus   herbi    Artiodactyla
+## 8                      Guinea pig         Cavis   herbi        Rodentia
+## 9                          Grivet Cercopithecus    omni        Primates
+## 10                     Chinchilla    Chinchilla   herbi        Rodentia
+## 11                Star-nosed mole     Condylura    omni    Soricomorpha
+## 12      African giant pouched rat    Cricetomys    omni        Rodentia
+## 13      Lesser short-tailed shrew     Cryptotis    omni    Soricomorpha
+## 14           Long-nosed armadillo       Dasypus   carni       Cingulata
+## 15                     Tree hyrax   Dendrohyrax   herbi      Hyracoidea
+## 16         North American Opossum     Didelphis    omni Didelphimorphia
+## 17                  Big brown bat     Eptesicus insecti      Chiroptera
+## 18              European hedgehog     Erinaceus    omni  Erinaceomorpha
+## 19                   Patas monkey  Erythrocebus    omni        Primates
+## 20      Western american chipmunk      Eutamias   herbi        Rodentia
+## 21                   Domestic cat         Felis   carni       Carnivora
+## 22                         Galago        Galago    omni        Primates
+## 23                     Gray hyrax   Heterohyrax   herbi      Hyracoidea
+## 24                 Mongoose lemur         Lemur   herbi        Primates
+## 25           Thick-tailed opposum    Lutreolina   carni Didelphimorphia
+## 26                        Macaque        Macaca    omni        Primates
+## 27               Mongolian gerbil      Meriones   herbi        Rodentia
+## 28                 Golden hamster  Mesocricetus   herbi        Rodentia
+## 29                          Vole       Microtus   herbi        Rodentia
+## 30                    House mouse           Mus   herbi        Rodentia
+## 31               Little brown bat        Myotis insecti      Chiroptera
+## 32           Round-tailed muskrat      Neofiber   herbi        Rodentia
+## 33                     Slow loris     Nyctibeus   carni        Primates
+## 34                           Degu       Octodon   herbi        Rodentia
+## 35     Northern grasshopper mouse     Onychomys   carni        Rodentia
+## 36                         Rabbit   Oryctolagus   herbi      Lagomorpha
+## 37                Desert hedgehog   Paraechinus    &lt;NA&gt;  Erinaceomorpha
+## 38                          Potto  Perodicticus    omni        Primates
+## 39                     Deer mouse    Peromyscus    &lt;NA&gt;        Rodentia
+## 40                      Phalanger     Phalanger    &lt;NA&gt;   Diprotodontia
+## 41                        Potoroo      Potorous   herbi   Diprotodontia
+## 42                     Rock hyrax      Procavia    &lt;NA&gt;      Hyracoidea
+## 43                 Laboratory rat        Rattus   herbi        Rodentia
+## 44          African striped mouse     Rhabdomys    omni        Rodentia
+## 45                Squirrel monkey       Saimiri    omni        Primates
+## 46          Eastern american mole      Scalopus insecti    Soricomorpha
+## 47                     Cotton rat      Sigmodon   herbi        Rodentia
+## 48                       Mole rat        Spalax    &lt;NA&gt;        Rodentia
+## 49         Arctic ground squirrel  Spermophilus   herbi        Rodentia
+## 50 Thirteen-lined ground squirrel  Spermophilus   herbi        Rodentia
+## 51 Golden-mantled ground squirrel  Spermophilus   herbi        Rodentia
+## 52                     Musk shrew        Suncus    &lt;NA&gt;    Soricomorpha
+## 53            Short-nosed echidna  Tachyglossus insecti     Monotremata
+## 54      Eastern american chipmunk        Tamias   herbi        Rodentia
+## 55                         Tenrec        Tenrec    omni    Afrosoricida
+## 56                     Tree shrew        Tupaia    omni      Scandentia
+## 57                          Genet       Genetta   carni       Carnivora
+## 58                     Arctic fox        Vulpes   carni       Carnivora
+## 59                        Red fox        Vulpes   carni       Carnivora
+##    conservation sleep_total sleep_rem sleep_cycle awake brainwt bodywt
+## 1          &lt;NA&gt;        17.0       1.8          NA   7.0 0.01550  0.480
+## 2            nt        14.4       2.4          NA   9.6      NA  1.350
+## 3            lc        14.9       2.3   0.1333333   9.1 0.00029  0.019
+## 4          &lt;NA&gt;        14.4       2.2   0.7666667   9.6      NA  3.850
+## 5          &lt;NA&gt;         7.0        NA          NA  17.0      NA  0.045
+## 6  domesticated        10.1       2.9   0.3333333  13.9 0.07000 14.000
+## 7            lc         3.0        NA          NA  21.0 0.09820 14.800
+## 8  domesticated         9.4       0.8   0.2166667  14.6 0.00550  0.728
+## 9            lc        10.0       0.7          NA  14.0      NA  4.750
+## 10 domesticated        12.5       1.5   0.1166667  11.5 0.00640  0.420
+## 11           lc        10.3       2.2          NA  13.7 0.00100  0.060
+## 12         &lt;NA&gt;         8.3       2.0          NA  15.7 0.00660  1.000
+## 13           lc         9.1       1.4   0.1500000  14.9 0.00014  0.005
+## 14           lc        17.4       3.1   0.3833333   6.6 0.01080  3.500
+## 15           lc         5.3       0.5          NA  18.7 0.01230  2.950
+## 16           lc        18.0       4.9   0.3333333   6.0 0.00630  1.700
+## 17           lc        19.7       3.9   0.1166667   4.3 0.00030  0.023
+## 18           lc        10.1       3.5   0.2833333  13.9 0.00350  0.770
+## 19           lc        10.9       1.1          NA  13.1 0.11500 10.000
+## 20         &lt;NA&gt;        14.9        NA          NA   9.1      NA  0.071
+## 21 domesticated        12.5       3.2   0.4166667  11.5 0.02560  3.300
+## 22         &lt;NA&gt;         9.8       1.1   0.5500000  14.2 0.00500  0.200
+## 23           lc         6.3       0.6          NA  17.7 0.01227  2.625
+## 24           vu         9.5       0.9          NA  14.5      NA  1.670
+## 25           lc        19.4       6.6          NA   4.6      NA  0.370
+## 26         &lt;NA&gt;        10.1       1.2   0.7500000  13.9 0.17900  6.800
+## 27           lc        14.2       1.9          NA   9.8      NA  0.053
+## 28           en        14.3       3.1   0.2000000   9.7 0.00100  0.120
+## 29         &lt;NA&gt;        12.8        NA          NA  11.2      NA  0.035
+## 30           nt        12.5       1.4   0.1833333  11.5 0.00040  0.022
+## 31         &lt;NA&gt;        19.9       2.0   0.2000000   4.1 0.00025  0.010
+## 32           nt        14.6        NA          NA   9.4      NA  0.266
+## 33         &lt;NA&gt;        11.0        NA          NA  13.0 0.01250  1.400
+## 34           lc         7.7       0.9          NA  16.3      NA  0.210
+## 35           lc        14.5        NA          NA   9.5      NA  0.028
+## 36 domesticated         8.4       0.9   0.4166667  15.6 0.01210  2.500
+## 37           lc        10.3       2.7          NA  13.7 0.00240  0.550
+## 38           lc        11.0        NA          NA  13.0      NA  1.100
+## 39         &lt;NA&gt;        11.5        NA          NA  12.5      NA  0.021
+## 40         &lt;NA&gt;        13.7       1.8          NA  10.3 0.01140  1.620
+## 41         &lt;NA&gt;        11.1       1.5          NA  12.9      NA  1.100
+## 42           lc         5.4       0.5          NA  18.6 0.02100  3.600
+## 43           lc        13.0       2.4   0.1833333  11.0 0.00190  0.320
+## 44         &lt;NA&gt;         8.7        NA          NA  15.3      NA  0.044
+## 45         &lt;NA&gt;         9.6       1.4          NA  14.4 0.02000  0.743
+## 46           lc         8.4       2.1   0.1666667  15.6 0.00120  0.075
+## 47         &lt;NA&gt;        11.3       1.1   0.1500000  12.7 0.00118  0.148
+## 48         &lt;NA&gt;        10.6       2.4          NA  13.4 0.00300  0.122
+## 49           lc        16.6        NA          NA   7.4 0.00570  0.920
+## 50           lc        13.8       3.4   0.2166667  10.2 0.00400  0.101
+## 51           lc        15.9       3.0          NA   8.1      NA  0.205
+## 52         &lt;NA&gt;        12.8       2.0   0.1833333  11.2 0.00033  0.048
+## 53         &lt;NA&gt;         8.6        NA          NA  15.4 0.02500  4.500
+## 54         &lt;NA&gt;        15.8        NA          NA   8.2      NA  0.112
+## 55         &lt;NA&gt;        15.6       2.3          NA   8.4 0.00260  0.900
+## 56         &lt;NA&gt;         8.9       2.6   0.2333333  15.1 0.00250  0.104
+## 57         &lt;NA&gt;         6.3       1.3          NA  17.7 0.01750  2.000
+## 58         &lt;NA&gt;        12.5        NA          NA  11.5 0.04450  3.380
+## 59         &lt;NA&gt;         9.8       2.4   0.3500000  14.2 0.05040  4.230</code></pre>
 <ol start="8" style="list-style-type: decimal">
 <li>What is the mean weight for both the small and large mammals?</li>
 </ol>
 <pre class="r"><code>smallmean&lt;-c(small$bodywt)
 mean(smallmean)</code></pre>
-<pre><code>## [1] 20.52396</code></pre>
-<p>The mean weight for small is 20.52396kg</p>
+<pre><code>## [1] 1.797847</code></pre>
+<p>The mean weight for small is 1.797847kg</p>
 <pre class="r"><code>largemean&lt;-c(large$bodywt)
 mean(largemean)</code></pre>
 <pre><code>## [1] 1747.071</code></pre>
@@ -878,7 +1025,7 @@ mean(LargeSleep)</code></pre>
 <pre><code>## [1] 3.3</code></pre>
 <pre class="r"><code>SmallSleep&lt;-c(small$sleep_total)
 mean(SmallSleep)</code></pre>
-<pre><code>## [1] 11.09079</code></pre>
+<pre><code>## [1] 11.78644</code></pre>
 <p>Smaller animals sleep much longer on avg.</p>
 <ol start="10" style="list-style-type: decimal">
 <li>Which animal is the sleepiest among the entire dataframe?</li>
@@ -910,18 +1057,14 @@ mean(SmallSleep)</code></pre>
 ##                  NA&#39;s   :27</code></pre>
 <pre class="r"><code>max(sleep$sleep_total)</code></pre>
 <pre><code>## [1] 19.9</code></pre>
-<pre class="r"><code>sleeptimedata&lt;-filter(sleep,sleep_total&gt;=19)
+<pre class="r"><code>sleeptimedata&lt;-filter(sleep,sleep_total==19.9)
 sleeptimedata</code></pre>
-<pre><code>##                   name      genus    vore           order conservation
-## 1        Big brown bat  Eptesicus insecti      Chiroptera           lc
-## 2 Thick-tailed opposum Lutreolina   carni Didelphimorphia           lc
-## 3     Little brown bat     Myotis insecti      Chiroptera         &lt;NA&gt;
-##   sleep_total sleep_rem sleep_cycle awake brainwt bodywt
-## 1        19.7       3.9   0.1166667   4.3 0.00030  0.023
-## 2        19.4       6.6          NA   4.6      NA  0.370
-## 3        19.9       2.0   0.2000000   4.1 0.00025  0.010</code></pre>
+<pre><code>##               name  genus    vore      order conservation sleep_total sleep_rem
+## 1 Little brown bat Myotis insecti Chiroptera         &lt;NA&gt;        19.9         2
+##   sleep_cycle awake brainwt bodywt
+## 1         0.2   4.1 0.00025   0.01</code></pre>
 <p>From the summary we see that 19.9 hours is the maximum number of
-sleep hours, which corresponds to the little brown bat Assuming
+sleep hours, which corresponds to the little brown bat. Assuming
 sleepiness corresponds to amount of sleep, little brown bat is
 sleepiest.</p>
 </div>

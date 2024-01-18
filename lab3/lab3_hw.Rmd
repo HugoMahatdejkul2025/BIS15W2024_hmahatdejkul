@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 output:
   html_document: 
     theme: spacelab
-    keep_md: true
+    keep_md: yes
 ---
 
 ## Instructions
@@ -34,19 +34,19 @@ sleep
 
 3. What are the dimensions of this data frame (variables and observations)? How do you know? Please show the *code* that you used to determine this below.  
 ```{r}
+?dim
 dim(sleep)
 ```
 
-83 total observations of 11 variables
+11 variables and 83 observations
 
 4. Are there any NAs in the data? How did you determine this? Please show your code.  
 ```{r}
-glimpse(sleep)
 summary(sleep)
 ```
 
 
-Yes there are NAs in the data. Using glimpse I can physically see NAs and summary tells me the number of NAs in each.
+Yes there are NAs in the data. Using summary command tells me that there are NAs in some of the columns.
 
 5. Show a list of the column names is this data frame.
 ```{r}
@@ -57,18 +57,28 @@ names(sleep)
 
 6. How many herbivores are represented in the data?  
 ```{r}
-sleep$vore
+f<-filter(sleep,vore=="herbi")
+f #shows 32 rows.
 table(sleep$vore)
-
 ```
 there are 32 herbivores
 
 7. We are interested in two groups; small and large mammals. Let's define small as less than or equal to 19kg body weight and large as greater than or equal to 200kg body weight. Make two new dataframes (large and small) based on these parameters.
 ```{r}
-large<-filter(sleep,bodywt>200)
-small<-filter(sleep,bodywt<=200)
+large<-filter(sleep,bodywt>=200)
+small<-filter(sleep,bodywt<=19)
 large
 small
+```
+
+```{r}
+newdataframelarge<-data.frame(large)
+newdataframelarge
+```
+
+```{r}
+newdataframesmall<-data.frame(small)
+newdataframesmall
 ```
 
 8. What is the mean weight for both the small and large mammals?
@@ -78,7 +88,7 @@ mean(smallmean)
 
 
 ```
-The mean weight for small is 20.52396kg
+The mean weight for small is 1.797847kg
 ```{r}
 largemean<-c(large$bodywt)
 mean(largemean)
@@ -106,10 +116,10 @@ Smaller animals sleep much longer on avg.
 ```{r}
 summary(sleep)
 max(sleep$sleep_total)
-sleeptimedata<-filter(sleep,sleep_total>=19)
+sleeptimedata<-filter(sleep,sleep_total==19.9)
 sleeptimedata
 ```
-From the summary we see that 19.9 hours is the maximum number of sleep hours, which corresponds to the little brown bat
+From the summary we see that 19.9 hours is the maximum number of sleep hours, which corresponds to the little brown bat.
 Assuming sleepiness corresponds to amount of sleep, little brown bat is sleepiest.
 
 ## Push your final code to GitHub!
