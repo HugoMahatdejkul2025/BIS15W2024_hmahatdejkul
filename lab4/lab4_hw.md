@@ -1,7 +1,7 @@
 ---
 title: "Lab 4 Homework"
 author: "Hugo Mahatdejkul"
-date: "2024-01-22"
+date: "2024-01-23"
 output:
   html_document: 
     theme: spacelab
@@ -35,7 +35,7 @@ getwd()
 ```
 
 ```
-## [1] "C:/Users/m3m3z/OneDrive/Desktop/BIS15W2024_hmahatdejkul/lab4"
+## [1] "/Users/htmahatd/Desktop/BIS15W2024_hmahatdejkul/lab4"
 ```
 
 ```r
@@ -222,7 +222,7 @@ levels(homerange$order)
 ## [40] "rodentia"              "salmoniformes"         "scorpaeniformes"      
 ## [43] "siluriformes"          "soricomorpha"          "squamata"             
 ## [46] "strigiformes"          "struthioniformes"      "syngnathiformes"      
-## [49] "testudines"            "tinamiformes"          "tetraodontiformes\xa0"
+## [49] "testudines"            "tetraodontiformes\xa0" "tinamiformes"
 ```
 
 **4. What taxa are represented in the `homerange` data frame? Make a new data frame `taxa` that is restricted to taxon, common name, class, order, family, genus, species.**  
@@ -3150,6 +3150,9 @@ length(x)
 ## [1] 517
 ```
 The two trophic guilds are herbivore and carnivore, with 227 herbivore species and 342 carnivore species
+
+
+# not due, but decent practice
 
 
 

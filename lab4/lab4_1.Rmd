@@ -9,7 +9,7 @@ output:
   pdf_document:
     toc: yes
 ---
-
+# install.packages("palmerpenguins")
 ## Learning Goals
 *At the end of this exercise, you will be able to:*    
 1. Use summary functions to assess the structure of a data frame.  
@@ -31,7 +31,8 @@ fish <- readr::read_csv("data/Gaeta_etal_CLC_data.csv")
 ## Data Structure
 Once data have been uploaded, let's get an idea of its structure, contents, and dimensions.  
 ```{r}
-
+#summary(fish)
+#glimpse(fish)
 ```
 
 ## Tidyverse
@@ -45,11 +46,16 @@ The first package that we will use that is part of the tidyverse is `dplyr`. `dp
 Select allows you to pull out columns of interest from a dataframe. To do this, just add the names of the columns to the `select()` command. The order in which you add them, will determine the order in which they appear in the output.
 ```{r}
 names(fish)
+select(fish, "lakeid","scalelength")
+
 ```
 
 We are only interested in lakeid and scalelength.
 ```{r}
 select(fish, "lakeid", "scalelength")
+
+fishsubset<-select(fish,"fish_id","scalelength")
+fishsubset
 ```
 
 To add a range of columns use `start_col:end_col`.
@@ -97,7 +103,7 @@ select(fish, contains("fish"))
 
 We won't cover regular expressions [regex](https://en.wikipedia.org/wiki/Regular_expression) in this class, but the following code is helpful when you know that a column contains a letter (in this case "a") followed by a subsequent string (in this case "er").  
 ```{r}
-select(fish, matches("a.+er"))
+select(fish, matches("a.+er")) #handy bit of code for project
 ```
 
 You can also select columns based on the class of data.  
@@ -106,12 +112,12 @@ glimpse(fish)
 ```
 
 ```{r}
-select_if(fish, is.numeric)
+select_if(fish, is.numeric) #super handy
 ```
 
 To select all columns that are *not* a class of data, you need to add a `~`.
 ```{r}
-select_if(fish, ~!is.numeric(.))
+select_if(fish, ~!is.numeric(.))# super handy
 ```
 
 ## Practice  
@@ -120,17 +126,22 @@ For this exercise we will use life history data `mammal_lifehistories_v2.csv` fo
 
 Load the data.  
 ```{r}
-
+getwd()
+mammal<-read_csv("mammal_lifehistories_v2.csv")
 ```
 
 1. Use one or more of your favorite functions to assess the structure of the data.  
 ```{r}
-
+glimpse(mammal)
 ```
 
 2. Are there any NAs? Are you sure? Try taking an average of `max. life` as a test.  
 ```{r}
+summary(mammal)
 
+is.na(mammal)
+
+mean(mammal$`max. life`)
 ```
 
 ```{r}
@@ -143,36 +154,45 @@ Load the data.
 
 3. What are the names of the columns in the `mammals` data?
 ```{r}
-
+colnames(mammal)
 ```
 
 4. Rename any columns that have capitol letters or punctuation issues.  
 ```{r}
+names(mammal)[3]<-paste("genus")
+names(mammal)[9]<-paste("mean mass")
+names(mammal)[10]<-paste("afr")
+names(mammal)[11]<-paste("max life")
+mammal
 
+#or use rename(mammals,genus="Genus", wean_mass="wean mass")
 ```
 
 5. We are only interested in the variables `genus`, `species`, and `mass`. Use `select()` to build a new dataframe `mass` focused on these variables.
 ```{r}
-
+mass<-select(mammal,"genus","species","mass")
 ```
 
 ```{r}
-
+mass
 ```
 
 6. What if we only wanted to exclude `order` and `family`? Use the `-` operator to make the code efficient.
 ```{r}
-
+noorderfam<-select(mammal,-order,-family)
+noorderfam
 ```
 
 7. Select the columns that include "mass" as part of the name.  
 ```{r}
-
+hasmass<-select(mammal,matches("mass"))
+hasmass
 ```
 
 8. Select all of the columns that are of class `character`.  
 ```{r}
-
+has_character<-select(mammal,is.character)
+has_character
 ```
 
 ## Other
@@ -180,7 +200,9 @@ Here are two examples of code that are super helpful to have in your bag of tric
 
 Imported data frames often have a mix of lower and uppercase column names. Use `toupper()` or `tolower()` to fix this issue. I always try to use lowercase to keep things consistent.  
 ```{r}
-
+mammal
+library(janitor)
+clean_names(mammal)#HOLY COW
 ```
 
 When naming columns, blank spaces are often added (don't do this, please). Here is a trick to remove these.  

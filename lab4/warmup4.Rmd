@@ -1,0 +1,45 @@
+---
+title: "wamrup4"
+output: html_document
+date: "2024-01-23"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r message=FALSE, warning=FALSE}
+library("tidyverse")
+library("palmerpenguins")
+```
+#dimensions in penguins
+```{r}
+dataset<-penguins
+dim(penguins)
+```
+#names of variables inside penguins
+```{r}
+names(penguins)
+variable.names(penguins)
+
+```
+#number of individuals sampled
+```{r}
+numberofsamples<-nrow(penguins)
+numberofsamples
+
+table(penguins$island)
+```
+
+```{r}
+avg<-mean(penguins$body_mass_g,na.rm=T)
+avg
+```
+
+
+
+
+
+
+
+

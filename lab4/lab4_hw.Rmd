@@ -96,6 +96,9 @@ length(x)
 The two trophic guilds are herbivore and carnivore, with 227 herbivore species and 342 carnivore species
 
 
+# not due, but decent practice
+
+
 
 **7. Make two new data frames, one which is restricted to carnivores and another that is restricted to herbivores.**  
 ```{r}

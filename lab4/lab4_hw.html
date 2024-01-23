@@ -11,7 +11,7 @@
 
 <meta name="author" content="Hugo Mahatdejkul" />
 
-<meta name="date" content="2024-01-22" />
+<meta name="date" content="2024-01-23" />
 
 <title>Lab 4 Homework</title>
 
@@ -376,7 +376,7 @@ display: none;
 
 <h1 class="title toc-ignore">Lab 4 Homework</h1>
 <h4 class="author">Hugo Mahatdejkul</h4>
-<h4 class="date">2024-01-22</h4>
+<h4 class="date">2024-01-23</h4>
 
 </div>
 
@@ -407,7 +407,7 @@ Data: <a href="http://datadryad.org/resource/doi:10.5061/dryad.q5j65/1" class="u
 <p><strong>1. Load the data into a new object called
 <code>homerange</code>.</strong></p>
 <pre class="r"><code>getwd()</code></pre>
-<pre><code>## [1] &quot;C:/Users/m3m3z/OneDrive/Desktop/BIS15W2024_hmahatdejkul/lab4&quot;</code></pre>
+<pre><code>## [1] &quot;/Users/htmahatd/Desktop/BIS15W2024_hmahatdejkul/lab4&quot;</code></pre>
 <pre class="r"><code>homerange&lt;-read.csv(&quot;Tamburelloetal_HomeRangeDatabase.csv&quot;)</code></pre>
 <p><strong>2. Explore the data. Show the dimensions, column names,
 classes for each variable, and a statistical summary. Keep these as
@@ -540,7 +540,7 @@ class(homerange$order)</code></pre>
 ## [40] &quot;rodentia&quot;              &quot;salmoniformes&quot;         &quot;scorpaeniformes&quot;      
 ## [43] &quot;siluriformes&quot;          &quot;soricomorpha&quot;          &quot;squamata&quot;             
 ## [46] &quot;strigiformes&quot;          &quot;struthioniformes&quot;      &quot;syngnathiformes&quot;      
-## [49] &quot;testudines&quot;            &quot;tinamiformes&quot;          &quot;tetraodontiformes\xa0&quot;</code></pre>
+## [49] &quot;testudines&quot;            &quot;tetraodontiformes\xa0&quot; &quot;tinamiformes&quot;</code></pre>
 <p><strong>4. What taxa are represented in the <code>homerange</code>
 data frame? Make a new data frame <code>taxa</code> that is restricted
 to taxon, common name, class, order, family, genus,
@@ -3434,6 +3434,9 @@ length(x)</code></pre>
 <pre><code>## [1] 517</code></pre>
 <p>The two trophic guilds are herbivore and carnivore, with 227
 herbivore species and 342 carnivore species</p>
+</div>
+<div id="not-due-but-decent-practice" class="section level1">
+<h1>not due, but decent practice</h1>
 <p><strong>7. Make two new data frames, one which is restricted to
 carnivores and another that is restricted to herbivores.</strong></p>
 <pre class="r"><code>herbivore&lt;-filter(homerange,trophic.guild!=&quot;carnivore&quot;)
@@ -9683,11 +9686,11 @@ America. it is a forager and is pretty common. Despite this, some do
 exist in mexico. It looks like a hawk and has sharp beaks and talons. It
 has long bright corlored legs with a black cap against its white neck .
 It actually walks a lot more than it flies.</p>
-</div>
 <div id="push-your-final-code-to-github" class="section level2">
 <h2>Push your final code to GitHub!</h2>
 <p>Please be sure that you check the <code>keep md</code> file in the
 knit preferences.</p>
+</div>
 </div>
 
 

@@ -59,7 +59,7 @@ filter(fish, lakeid != "AL")
 ## Using `filter()` with multiple observations  
 Filtering multiple values within the same variable requires the `%in%` [operator](https://www.tutorialspoint.com/r/r_operators.htm).    
 ```{r}
-filter(fish, length %in% c(167, 175))
+filter(fish, length %in% c(167, 175)) #filter out fish w 2 different Values
 ```
 
 Alternatively, you can use `between` if you are looking for a range of specific values.  
