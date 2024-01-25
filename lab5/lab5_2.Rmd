@@ -72,6 +72,10 @@ mammals %>%
 1. We are interested in the fish from the lakes "AL" and "AR" with a radii length between 2 and 4. Extract this information from the `fish` data. Use pipes!  
 ```{r}
 
+fish %>%
+  select(lakeid,radii_length_mm) %>% #choose column
+  filter(lakeid=="AL" | lakeid=="AR") %>% #only values with lake id we want
+  filter(radii_length_mm>2 & radii_length_mm<4) #filter even more that we want these lengths form those lakes
 ```
 
 ## `arrange()`
@@ -100,8 +104,14 @@ fish %>%
 ## Practice
 1. We are interested in the radii length and scalelength of fish with the id `300`. Extract this information from the `fish` data. Please sort the data by radii length.
 ```{r}
-
+fish %>%
+  select(radii_length_mm,scalelength,fish_id) %>% 
+  filter(fish_id==300) %>% 
+  arrange(radii_length_mm)
+  
 ```
+
+
 
 ## `mutate()`  
 Mutate allows us to create a new column from existing columns in a data frame. We are doing a small introduction here and will add some additional functions later. Let's convert the length variable from cm to millimeters and create a new variable called length_mm.  
@@ -139,7 +149,7 @@ mammals %>%
 ```{r}
 mammals %>% 
   select(genus, species, newborn) %>%
-  mutate(newborn_new = ifelse(newborn == -999.00, NA, newborn))%>% 
+  mutate(newborn_new = ifelse(newborn == -999.00, NA, newborn))%>% #logical statement(newborn==-999. if it is true, newborn_new is na if it is false, then its a normal value so it is just set to the same value as newborn, or the original data.)
   arrange(newborn)
 ```
 
