@@ -1,7 +1,7 @@
 ---
 title: "Lab 4 Homework"
 author: "Hugo Mahatdejkul"
-date: "2024-01-23"
+date: "2024-01-25"
 output:
   html_document: 
     theme: spacelab
@@ -8110,8 +8110,8 @@ ON AVG carnivore has larger hra m2
 **9. Make a new dataframe `owls` that is limited to the mean mass, log10 mass, family, genus, and species of owls in the database. Which is the smallest owl? What is its common name? Do a little bit of searching online to see what you can learn about this species and provide a link below** 
 
 ```r
-owldata<-select(homerange,mean.mass.g,log10.mass,family,genus,species)
-owl<-filter(owldata, family=="strigidae")
+owls<-select(homerange,mean.mass.g,log10.mass,family,genus,species)
+owl<-filter(owls, family=="strigidae")
 
 owl
 ```
@@ -9454,7 +9454,7 @@ highest_hmr
 ##   log10.preymass PPMR prey.size.reference
 ## 1             NA   NA                <NA>
 ```
-The crested Caracara seems to have the largest homerange. Although listed as a carnivore, it is actually an omnivore found mostly in south America. it is a forager and is pretty common. Despite this, some do exist in mexico. It looks like a hawk and has sharp beaks and talons. It has long bright corlored legs with a black cap against its white neck . It actually walks a lot more than it flies.
+The crested Caracara seems to have the largest homerange. Although listed as a carnivore, it is actually an omnivore found mostly in south America. it is a forager and is pretty common. Despite this, some do exist in mexico. It looks like a hawk and has sharp beaks and talons. It has long bright corlored legs with a black cap against its white neck . It actually walks a lot more than it flies!
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences.   

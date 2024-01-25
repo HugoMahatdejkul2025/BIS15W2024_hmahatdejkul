@@ -11,7 +11,7 @@
 
 <meta name="author" content="Hugo Mahatdejkul" />
 
-<meta name="date" content="2024-01-23" />
+<meta name="date" content="2024-01-25" />
 
 <title>Lab 4 Homework</title>
 
@@ -376,7 +376,7 @@ display: none;
 
 <h1 class="title toc-ignore">Lab 4 Homework</h1>
 <h4 class="author">Hugo Mahatdejkul</h4>
-<h4 class="date">2024-01-23</h4>
+<h4 class="date">2024-01-25</h4>
 
 </div>
 
@@ -8367,8 +8367,8 @@ mean(meanh,na.rm=TRUE)</code></pre>
 genus, and species of owls in the database. Which is the smallest owl?
 What is its common name? Do a little bit of searching online to see what
 you can learn about this species and provide a link below</strong></p>
-<pre class="r"><code>owldata&lt;-select(homerange,mean.mass.g,log10.mass,family,genus,species)
-owl&lt;-filter(owldata, family==&quot;strigidae&quot;)
+<pre class="r"><code>owls&lt;-select(homerange,mean.mass.g,log10.mass,family,genus,species)
+owl&lt;-filter(owls, family==&quot;strigidae&quot;)
 
 owl</code></pre>
 <pre><code>##   mean.mass.g log10.mass    family      genus     species
@@ -9685,7 +9685,7 @@ listed as a carnivore, it is actually an omnivore found mostly in south
 America. it is a forager and is pretty common. Despite this, some do
 exist in mexico. It looks like a hawk and has sharp beaks and talons. It
 has long bright corlored legs with a black cap against its white neck .
-It actually walks a lot more than it flies.</p>
+It actually walks a lot more than it flies!</p>
 <div id="push-your-final-code-to-github" class="section level2">
 <h2>Push your final code to GitHub!</h2>
 <p>Please be sure that you check the <code>keep md</code> file in the
