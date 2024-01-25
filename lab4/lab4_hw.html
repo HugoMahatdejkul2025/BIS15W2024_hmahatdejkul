@@ -8367,24 +8367,25 @@ mean(meanh,na.rm=TRUE)</code></pre>
 genus, and species of owls in the database. Which is the smallest owl?
 What is its common name? Do a little bit of searching online to see what
 you can learn about this species and provide a link below</strong></p>
-<pre class="r"><code>owls&lt;-select(homerange,mean.mass.g,log10.mass,family,genus,species)
-owl&lt;-filter(owls, family==&quot;strigidae&quot;)
+<pre class="r"><code>owls&lt;-select(homerange,mean.mass.g,log10.mass,family,genus,species,order)
+owl&lt;-filter(owls, order==&quot;strigiformes&quot;)
 
 owl</code></pre>
-<pre><code>##   mean.mass.g log10.mass    family      genus     species
-## 1      119.00   2.075547 strigidae   aegolius    funereus
-## 2      252.00   2.401401 strigidae       asio        otus
-## 3      156.50   2.194514 strigidae     athene      noctua
-## 4     2191.00   3.340642 strigidae       bubo        bubo
-## 5     1510.00   3.178977 strigidae       bubo virginianus
-## 6       61.32   1.787602 strigidae glaucidium  passerinum
-## 7     1920.00   3.283301 strigidae     nyctea   scandiaca
-## 8      519.00   2.715167 strigidae      strix       aluco</code></pre>
+<pre><code>##   mean.mass.g log10.mass    family      genus     species        order
+## 1      119.00   2.075547 strigidae   aegolius    funereus strigiformes
+## 2      252.00   2.401401 strigidae       asio        otus strigiformes
+## 3      156.50   2.194514 strigidae     athene      noctua strigiformes
+## 4     2191.00   3.340642 strigidae       bubo        bubo strigiformes
+## 5     1510.00   3.178977 strigidae       bubo virginianus strigiformes
+## 6       61.32   1.787602 strigidae glaucidium  passerinum strigiformes
+## 7     1920.00   3.283301 strigidae     nyctea   scandiaca strigiformes
+## 8      519.00   2.715167 strigidae      strix       aluco strigiformes
+## 9      285.00   2.454845 tytonidae       tyto        alba strigiformes</code></pre>
 <pre class="r"><code>min(owl$mean.mass.g)</code></pre>
 <pre><code>## [1] 61.32</code></pre>
 <pre class="r"><code>filter(owl,mean.mass.g==61.32)</code></pre>
-<pre><code>##   mean.mass.g log10.mass    family      genus    species
-## 1       61.32   1.787602 strigidae glaucidium passerinum</code></pre>
+<pre><code>##   mean.mass.g log10.mass    family      genus    species        order
+## 1       61.32   1.787602 strigidae glaucidium passerinum strigiformes</code></pre>
 <p>the smallest owl is the Eurasian pygmy owl which is its common name.
 <a href="https://en.wikipedia.org/wiki/Eurasian_pygmy_owl" class="uri">https://en.wikipedia.org/wiki/Eurasian_pygmy_owl</a>. It is
 part of the strigidae family,glaucidium genus and passerinum species. <a href="https://animaldiversity.org/accounts/Strigidae/" class="uri">https://animaldiversity.org/accounts/Strigidae/</a> tells us
