@@ -1,6 +1,6 @@
 ---
 title: "dplyr Superhero"
-date: "2024-01-29"
+date: "2024-01-30"
 output:
   html_document: 
     theme: spacelab
@@ -25,10 +25,10 @@ library("tidyverse")
 
 ```
 ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ dplyr     1.1.4     ✔ readr     2.1.4
 ## ✔ forcats   1.0.0     ✔ stringr   1.5.1
 ## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
 ## ✔ purrr     1.0.2     
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
@@ -98,10 +98,31 @@ names(superhero_info)
 ```
 
 ```r
+#superhero_info %>%
+  #rename(race=Race)
 superhero_info<-clean_names(superhero_info)
+superhero_info
 ```
 
-## `tabyl`
+```
+## # A tibble: 734 × 10
+##    name  gender eye_color race  hair_color height publisher skin_color alignment
+##    <chr> <chr>  <chr>     <chr> <chr>       <dbl> <chr>     <chr>      <chr>    
+##  1 A-Bo… Male   yellow    Human No Hair       203 Marvel C… <NA>       good     
+##  2 Abe … Male   blue      Icth… No Hair       191 Dark Hor… blue       good     
+##  3 Abin… Male   blue      Unga… No Hair       185 DC Comics red        good     
+##  4 Abom… Male   green     Huma… No Hair       203 Marvel C… <NA>       bad      
+##  5 Abra… Male   blue      Cosm… Black          NA Marvel C… <NA>       bad      
+##  6 Abso… Male   blue      Human No Hair       193 Marvel C… <NA>       bad      
+##  7 Adam… Male   blue      <NA>  Blond          NA NBC - He… <NA>       good     
+##  8 Adam… Male   blue      Human Blond         185 DC Comics <NA>       good     
+##  9 Agen… Female blue      <NA>  Blond         173 Marvel C… <NA>       good     
+## 10 Agen… Male   brown     Human Brown         178 Marvel C… <NA>       good     
+## # ℹ 724 more rows
+## # ℹ 1 more variable: weight <dbl>
+```
+
+## `tabyl` #shows proportions
 The `janitor` package has many awesome functions that we will explore. Here is its version of `table` which not only produces counts but also percentages. Very handy! Let's use it to explore the proportion of good guys and bad guys in the `superhero_info` data.  
 
 ```r

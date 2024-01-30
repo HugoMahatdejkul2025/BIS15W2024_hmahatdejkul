@@ -10,22 +10,56 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Warm-up
 1. Load the `bison.csv` data.
-2. What are the dimesions and structure of the data?
-3. We are only interested in code, sex, weight, year of birth. Restrict the data to these variables and store the dataframe as a new object.
-4. Pull out the animals born between 1980-1990.
-5. How many male and female bison are represented between 1980-1990?
-6. Between 1980-1990, were males or females larger on average?
-
-1.
 ```{r}
 library(tidyverse)
+library(janitor)
 bison<- read_csv ("data/bison.csv")
 ```
-
-2.
+2. What are the dimesions and structure of the data?
 ```{r}
 dim(bison)
 glimpse(bison)
 summary(bison)
 ```
+3. We are only interested in code, sex, weight, year of birth. Restrict the data to these variables and store the dataframe as a new object.
+```{r}
+interest_bison<-
+  bison %>%
+  select(data_code,animal_sex,animal_weight,animal_yob)
+interest_bison
+
+```
+
+4. Pull out the animals born between 1980-1990.
+```{r}
+year_birth<-
+  interest_bison %>%
+  filter(animal_yob>=1980,animal_yob<=1990 )
+year_birth
+```
+
+5. How many male and female bison are represented between 1980-1990?
+```{r}
+female<-
+  year_birth %>%
+  filter(animal_sex=="F")
+dim(female)
+
+male<-
+  year_birth %>%
+  filter(animal_sex=="M")
+dim(male)
+
+
+```
+21 male 414 female
+6. Between 1980-1990, were males or females larger on average?
+```{r}
+mean(female$animal_weight)
+mean(male$animal_weight)
+```
+male larger
+
+
+
 
