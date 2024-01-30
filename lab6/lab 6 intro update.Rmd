@@ -1,0 +1,31 @@
+---
+title: "warmup 6"
+output: html_document
+date: "2024-01-30"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Warm-up
+1. Load the `bison.csv` data.
+2. What are the dimesions and structure of the data?
+3. We are only interested in code, sex, weight, year of birth. Restrict the data to these variables and store the dataframe as a new object.
+4. Pull out the animals born between 1980-1990.
+5. How many male and female bison are represented between 1980-1990?
+6. Between 1980-1990, were males or females larger on average?
+
+1.
+```{r}
+library(tidyverse)
+bison<- read_csv ("data/bison.csv")
+```
+
+2.
+```{r}
+dim(bison)
+glimpse(bison)
+summary(bison)
+```
+
