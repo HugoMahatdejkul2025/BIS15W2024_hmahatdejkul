@@ -31,6 +31,12 @@ glimpse(penguins)
 
 As biologists, a good question that we may ask is how do the measured variables differ by island (on average)?
 ```{r}
+penguins <-penguins
+levels(penguins$island)
+penguins %>%
+  group_by(island) %>%
+  summarize(mean_mass=mean(body_mass_g),flipper=mean(flipper_length_mm),countable=n())
+  
 
 ```
 
@@ -40,12 +46,17 @@ As biologists, a good question that we may ask is how do the measured variables 
 
 Why do we have NA here? Do all of these penguins lack data?
 ```{r}
-
+penguins %>%
+  group_by(island) %>%
+  summarize(number_NAs=sum(is.na(body_mass_g)))
 ```
 
 Well, that won't work so let's remove the NAs and recalculate.
 ```{r}
-
+penguins %>%
+  filter(!is.na(body_mass_g)) %>%
+  group_by(island) %>%
+  summarize(meannum=mean(body_mass_g))
 ```
 
 What if we are interested in the number of observations (penguins) by species and island?
@@ -53,6 +64,7 @@ What if we are interested in the number of observations (penguins) by species an
 penguins %>% 
   group_by(species, island) %>% 
   summarize(n=n(), .groups= 'keep')#the .groups argument here just prevents a warning message
+n_distinct(penguins$species)
 ```
 
 ## Counts
@@ -79,18 +91,24 @@ penguins %>%
 
 For counts, I also like `tabyl()`. Lots of options are supported in [tabyl](https://cran.r-project.org/web/packages/janitor/vignettes/tabyls.html)
 ```{r}
-
+penguins %>%
+  tabyl(island,species)
 ```
 
 ## Practice
 1. How does the mean of `bill_length_mm` compare between penguin species?
 ```{r}
+penguins %>%
+  filter(!is.na(bill_length_mm))%>%
+  group_by(species) %>%
+  summarize(mean_bill_length=mean(bill_length_mm))
 
 ```
 
 2. For some penguins, their sex is listed as NA. Where do these penguins occur?
 ```{r}
-
+penguins %>%
+  summarize(number_NAs=sum(is.na(sex)))
 ```
 
 ## `across()`
