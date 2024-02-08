@@ -1,7 +1,7 @@
 ---
 title: "Midterm 1 W24"
 author: "Hugo Mahatdejkul"
-date: "2024-02-06"
+date: "2024-02-08"
 output:
   html_document: 
     keep_md: yes
@@ -125,6 +125,23 @@ wolves %>%
 
 ```r
 #DENA has the largest number of wolf packs, with 340 total wolf packs!
+```
+
+```r
+wolves %>%
+  group_by(park) %>%
+  summarize(n=n_distinct(pack))
+```
+
+```
+## # A tibble: 5 × 2
+##   park      n
+##   <chr> <int>
+## 1 DENA     69
+## 2 GNTP     12
+## 3 VNP      22
+## 4 YNP      46
+## 5 YUCH     36
 ```
 
 

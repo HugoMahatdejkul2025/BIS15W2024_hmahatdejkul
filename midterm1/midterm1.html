@@ -11,7 +11,7 @@
 
 <meta name="author" content="Hugo Mahatdejkul" />
 
-<meta name="date" content="2024-02-06" />
+<meta name="date" content="2024-02-08" />
 
 <title>Midterm 1 W24</title>
 
@@ -352,7 +352,7 @@ display: none;
 
 <h1 class="title toc-ignore">Midterm 1 W24</h1>
 <h4 class="author">Hugo Mahatdejkul</h4>
-<h4 class="date">2024-02-06</h4>
+<h4 class="date">2024-02-08</h4>
 
 </div>
 
@@ -452,6 +452,17 @@ packs?</p>
 ##   YNP 248 0.28703704
 ##  YUCH 151 0.17476852</code></pre>
 <pre class="r"><code>#DENA has the largest number of wolf packs, with 340 total wolf packs!</code></pre>
+<pre class="r"><code>wolves %&gt;%
+  group_by(park) %&gt;%
+  summarize(n=n_distinct(pack))</code></pre>
+<pre><code>## # A tibble: 5 × 2
+##   park      n
+##   &lt;chr&gt; &lt;int&gt;
+## 1 DENA     69
+## 2 GNTP     12
+## 3 VNP      22
+## 4 YNP      46
+## 5 YUCH     36</code></pre>
 <p>Problem 5. (4 points) Which park has the highest total number of
 human-caused mortalities <code>mort_all</code>?</p>
 <pre class="r"><code>wolves %&gt;%

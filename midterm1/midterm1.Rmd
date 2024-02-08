@@ -67,6 +67,11 @@ wolves %>%
 
 #DENA has the largest number of wolf packs, with 340 total wolf packs!
 ```
+```{r}
+wolves %>%
+  group_by(park) %>%
+  summarize(n=n_distinct(pack))
+```
 
 
 
