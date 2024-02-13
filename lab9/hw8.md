@@ -1,7 +1,7 @@
 ---
 title: "Homework 8"
 author: "Hugo Mahatdejkul"
-date: "2024-02-12"
+date: "2024-02-13"
 output:
   html_document: 
     theme: spacelab
@@ -129,7 +129,7 @@ library(here)
 ```
 
 ```
-## here() starts at C:/Users/m3m3z/Desktop/BIS15W2024_hmahatdejkul
+## here() starts at /Users/htmahatd/Desktop/BIS15W2024_hmahatdejkul
 ```
 
 The quotes show the folder structure from the root directory.
@@ -155,8 +155,8 @@ sydneybeaches_long <-
 ```r
 sydneybeaches_wide <- 
   sydneybeaches_long %>%
-  group_by(site) %>%
-  pivot_wider(names_from = "date", values_from="enterococci_cfu_100ml")
+  pivot_wider(names_from = "date", values_from="enterococci_cfu_100ml") %>%
+group_by(site)
 ```
 
 5. Pivot the data back so that the dates are data and not column names.
@@ -182,6 +182,10 @@ sydneybeaches_wide %>%
 ##  9 Clovelly Beach 07/03/2013                     3
 ## 10 Clovelly Beach 25/03/2013                     0
 ## # ℹ 3,774 more rows
+```
+
+```r
+#change everything except for site, which is a column we want to actually keep
 ```
 
 6. We haven't dealt much with dates yet, but separate the date into columns day, month, and year. Do this on the `sydneybeaches_long` data.

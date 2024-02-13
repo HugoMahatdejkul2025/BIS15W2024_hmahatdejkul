@@ -78,8 +78,8 @@ sydneybeaches_long <-
 ```{r}
 sydneybeaches_wide <- 
   sydneybeaches_long %>%
-  group_by(site) %>%
-  pivot_wider(names_from = "date", values_from="enterococci_cfu_100ml")
+  pivot_wider(names_from = "date", values_from="enterococci_cfu_100ml") %>%
+group_by(site)
 
 ```
 
@@ -87,6 +87,7 @@ sydneybeaches_wide <-
 ```{r}
 sydneybeaches_wide %>%
   pivot_longer(-c("site"),names_to="date",values_to="enterococci_cfu_100ml")
+#change everything except for site, which is a column we want to actually keep
 ```
 
 6. We haven't dealt much with dates yet, but separate the date into columns day, month, and year. Do this on the `sydneybeaches_long` data.
