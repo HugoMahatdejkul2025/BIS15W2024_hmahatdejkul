@@ -1,7 +1,7 @@
 ---
 title: "Homework 9"
 author: "Hugo Mahatdejkul"
-date: "2024-02-14"
+date: "2024-02-15"
 output:
   html_document: 
     theme: spacelab
@@ -392,7 +392,7 @@ univ_calif_final%>%
 ![](hw9_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
 
 ```r
-#Sandiego leads, followed by davis and santacruz
+#San diego leads, followed by davis and santa cruz
 ```
 
 ## Knit Your Output and Post to [GitHub](https://github.com/FRS417-DataScienceBiologists)

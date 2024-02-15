@@ -1,0 +1,32 @@
+---
+title: "wamrup"
+output: html_document
+date: "2024-02-15"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+```{r}
+library(tidyverse)
+```
+
+
+```{r}
+malaria<-read.csv("data/malaria.csv") 
+```
+
+```{r}
+malaria <- 
+  malaria %>%
+  pivot_longer(-c(location_name,District,Province,data_date,submitted_date),names_to="age",values_to="gotsmalaria")
+malaria
+```
+
+```{r}
+malaria %>%
+  arrange(desc(gotsmalaria))
+```
+

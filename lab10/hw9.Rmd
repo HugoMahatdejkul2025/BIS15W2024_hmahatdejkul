@@ -164,7 +164,7 @@ univ_calif_final %>%
 ```{r}
 univ_calif_final%>%
   ggplot(aes(x=campus,y=pcip26))+geom_col()
-#Sandiego leads, followed by davis and santacruz
+#San diego leads, followed by davis and santa cruz
 ```
 
 ## Knit Your Output and Post to [GitHub](https://github.com/FRS417-DataScienceBiologists)
