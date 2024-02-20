@@ -146,6 +146,7 @@ univ_calif_final
 univ_calif_final%>%
   select(campus,adm_rate)%>%
   ggplot(aes(x=campus,y=adm_rate))+geom_col()
+
 univ_calif_final %>%
   select(campus,adm_rate) %>%
   group_by(adm_rate) %>%
