@@ -5,6 +5,7 @@ Feel free to contact the 3rd year genomics major at anytime [email](htma@ucdavis
 ## Warning: 
 Although, do so at your own risk, as he is a threat to all in terms of coding :).
 
+!!!!!!!!!!!!!!MY HOMEWORK IS IN THE CORRESPONDING LAB!!!!!!!!!!!!!!
 
 Cheat sheet:
 library("tidyverse") /// library(tidyverse)	
