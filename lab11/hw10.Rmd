@@ -144,8 +144,8 @@ deserts %>%
 ```{r}
 deserts %>%
   filter(sex=="M" & species_id=="PF") %>%
-  ggplot(aes(x=hindfoot_length,y=weight))+geom_col(na.rm=T)+labs(title="bar graph showing how hindfoot length compares to weight for Male flavus",x="hindfoot length")+theme_linedraw()+theme(plot.title=element_text(size=rel(1.2),hjust=.5))
-
+  ggplot(aes(x=hindfoot_length,y=weight,fill=hindfoot_length))+geom_col(na.rm=T,alpha=(1))+labs(title="bar graph showing how hindfoot length compares to weight for Male flavus",x="hindfoot length")+theme_linedraw()+theme(plot.title=element_text(size=rel(1.2),hjust=.5))
+#light blue means bigger hindfoot length
 ```
 
 ## Push your final code to GitHub!
