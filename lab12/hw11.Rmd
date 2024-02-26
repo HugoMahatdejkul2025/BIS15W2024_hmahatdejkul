@@ -129,6 +129,16 @@ gapminder %>%
 
 **10. Make one plot of your choice that uses faceting!**
 
+```{r}
+#comparing the populations between thailand and the US, because I am thai and and a US Citizen
+gapminder %>% 
+  select(year,country,pop,continent) %>%
+  filter(year<=2000 & year>=1950) %>%
+  filter(country=="Thailand" | country=="United States") %>%
+  mutate(new_pop=(pop/1000000)) %>%
+  ggplot(aes(x=year,y=new_pop,color=country))+geom_line() +
+  facet_wrap(~continent)
+```
 
 
 ## Push your final code to GitHub!
