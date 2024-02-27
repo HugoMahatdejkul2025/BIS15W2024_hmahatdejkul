@@ -106,6 +106,7 @@ changeinpop<- gapminder %>%
   head(n=5)
 
 ```
+
 ```{r}
 changeinpop %>%
   ggplot(aes(country,growth))+geom_boxplot()+scale_y_log10()
