@@ -29,11 +29,12 @@ Go to Tools -> Global Options -> Copilot -> Enable Git
 ## Exploration Questions:
 Lets get some get a feel for what copilot (or ChatGPT) does, use Github Copilot to autocomplete the questions below. You can alternatively paste the questions in ChatGPT or Microsoft Copilot.
 1. What is AI?
-
+AI, or Artificial Intelligence, refers to the simulation of human intelligence processes by machines, especially computer systems. These processes include learning (the acquisition of information and rules for using the information), reasoning (using rules to reach approximate or definite conclusions), and self-correction. AI can be categorized into narrow AI, which is designed for a specific task, and general AI, which aims to mimic human intelligence across a wide range of tasks.
 2. What is ChatGPT?
-
+GitHub Copilot is an AI-powered code completion tool developed by GitHub in collaboration with OpenAI. It assists developers by providing context-aware code suggestions and autocompletions as they write code within their Integrated Development Environment (IDE). GitHub Copilot is trained on a vast amount of publicly available code and programming documentation, allowing it to generate code snippets, function calls, and even entire functions based on the context of the code being written. 
 3. What is Github Copilot?
-
+GitHub Copilot is an AI-powered code completion tool developed by GitHub in collaboration with OpenAI. It assists developers by providing context-aware code suggestions and autocompletions as they write code within their Integrated Development Environment (IDE). Copilot is trained on a vast dataset of code from public repositories and programming d
+ocumentation, allowing it to generate code snippets, function calls, and even entire functions based on the context of the code being written. It supports multiple programming languages and aims to enhance productivity by offering intelligent suggestions and reducing the need for manual coding.
 4. [Try it yourself: Insert your own question here]
 
 ## Load the libraries  
@@ -48,7 +49,7 @@ library(shinydashboard)
 ## Load the Data: 
 ```{r}
 #load the Netflix Data in your Data folder, save it under the object name netflix
-
+netflix<-read_csv("data/netflix_titles.csv")
 
 ```
 
@@ -58,23 +59,32 @@ library(shinydashboard)
 ## Lets Practice:
 Explore the elements in your data: include a comment within your code chunk to prompt Copilot to use the function of your choice
 ```{r}
-
+head(netflix)
 
 ```
 *Did copilot use your preferred method to get the summary of the data? If not, how could you improve the prompt to get the desired output?*
+```{r}
+names(netflix)
+```
 
 
 Sort out the movies from the netflix into an new object called netflix_movies
 ```{r} 
-
+netflix_movies <-
+  netflix %>%
+  filter(type=="Movie")
 ```
 
 
 Which director has the most movies on netflix?
 ```{r}
-
-
+netflix_movies %>%
+#  filter(director!=("NA")) %%
+  group_by(director) %>%
+  summarize(director_count=n()) %>%
+  arrange(desc(director_count))
 ```
+  ```
 *Do you see anything wrong with the table above, look at row 1. Write a prompt below to fix this.*
 
 [insert your prompt here]
@@ -132,6 +142,59 @@ Make a bar plot of the top directors with the most movies on netflix
 
 
 *Now use ChatGPT, Copilot or previous notes to fix the code*
+
+
+```{r}
+
+# Sample data
+data <- data.frame(
+  plant_type = c("tree", "fruit", "vegetable", "flower"),
+  height = c(10, 5, 7, 8),
+  weight = c(20, 15, 18, 12)
+)
+
+# Define UI
+ui <- fluidPage(
+  titlePanel("Plant Data Visualization"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      checkboxGroupInput("variables",
+                         label = h3("Variables to Display"),
+                         choices = list("Height" = "height",
+                                        "Weight" = "weight"),
+                         selected = c("height", "weight")
+      )
+    ),
+    
+    mainPanel(
+      plotOutput("plot")
+    )
+  )
+)
+
+# Define server logic
+server <- function(input, output) {
+  
+  output$plot <- renderPlot({
+    # Filter data based on selected variables
+    plot_data <- data[, c("plant_type", input$variables)]
+    
+    # Melt data for plotting
+    plot_data <- melt(plot_data, id.vars = "plant_type")
+    
+    # Plot
+    ggplot(plot_data, aes(x = plant_type, y = value, color = variable)) +
+      geom_point() +
+      labs(x = "Plant Type", y = "Value", color = "Variable") +
+      theme_minimal()
+  })
+}
+
+# Run the application
+shinyApp(ui = ui, server = server)
+
+```
 
 
 
